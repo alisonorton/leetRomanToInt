@@ -1,0 +1,99 @@
+class Solution {
+    public int romanToInt(String s) {
+        
+        String romanNum = s;
+        ArrayList<Integer> numbers = new ArrayList<>();
+        
+        for (int i = 0; i < romanNum.length(); i++){
+            //Logic for handling numbers IV and IX OR 4 and 9
+            if(Character.compare(romanNum.charAt(i), 'I')==0){
+                if(i+1 == romanNum.length()){
+                    numbers.add(1);
+                }
+                else if(Character.compare(romanNum.charAt(i+1), 'V')==0){
+                    numbers.add(4);
+                    i++;
+                }
+                else if (Character.compare(romanNum.charAt(i+1), 'X')==0){
+                    numbers.add(9);
+                    i++;
+                }
+                else{
+                    numbers.add(1);
+                }
+            }
+            
+            //
+            
+            else if(Character.compare(romanNum.charAt(i), 'V')==0){
+                     numbers.add(5);
+            }
+            
+            
+            //Logic for handling numbers XL and XC OR 40 and 90
+            else if(Character.compare(romanNum.charAt(i), 'X')==0){
+                 if(i+1 == romanNum.length()){
+                    numbers.add(10);
+                    
+                }
+                else if(Character.compare(romanNum.charAt(i+1), 'L')==0){
+                    numbers.add(40);
+                    i++;
+                }
+                else if (Character.compare(romanNum.charAt(i+1), 'C')==0){
+                    numbers.add(90);
+                    i++;
+                }
+                else{
+                    numbers.add(10);
+                }
+            }
+            //
+            else if(Character.compare(romanNum.charAt(i), 'L')==0){
+                numbers.add(50);
+            }
+            //Logic for handling numbers CD and CM OR 400 and 900
+            else if(Character.compare(romanNum.charAt(i), 'C')==0){
+                 if(i+1 == romanNum.length()){
+                    numbers.add(100);
+                }
+                else if(Character.compare(romanNum.charAt(i+1), 'D')==0){
+                    numbers.add(400);
+                    i++;
+                }
+                else if (Character.compare(romanNum.charAt(i+1), 'M')==0){
+                    numbers.add(900);
+                    i++;
+                }
+                else{
+                    numbers.add(100);
+                }
+
+            }
+            //
+            else if(Character.compare(romanNum.charAt(i), 'D')==0){
+                numbers.add(500);
+
+            }
+            else if(Character.compare(romanNum.charAt(i), 'M')==0){
+                numbers.add(1000);
+
+            }
+            else {
+                
+            }
+        }
+        
+        //For loop for adding all the numbers to get our total
+        int total = numbers.get(0);
+       // int i = 1;
+        
+        for (int i = 1; i < numbers.size(); i++){
+            total += numbers.get(i);
+        }
+        
+        return total;
+        }
+        
+        
+    }
